@@ -9,6 +9,19 @@ server part is written specifically for Ruby on Rails, but the client does not r
 require Rails. A Rails application may choose to act as a service provider,
 as a client, or both.
 
+== Rails 3
+
+For Rails 3, use this in your routes.rb:
+
+    AppName::Application.routes.draw do
+
+      match 'services' => 'service#receive_json_rpc_request'
+
+    end
+
+If you add the glob after 'services' ('services/*method') the routes won't match http://127.0.0.1/services, so I left it off. Leaving the glob off, however, won't match the help address given in the examples ('http://127.0.0.1:3000/services/index.html'). Maybe someone has a fix for this?
+
+The client hasn't been tested but the server works fine for the examples.
 
 == Server Side
 
