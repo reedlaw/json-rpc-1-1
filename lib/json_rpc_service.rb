@@ -350,8 +350,8 @@ module JsonRpcService
             val ||= ''            
             val = URI::decode(val).gsub('+', ' ')
             case old = @args_named[arg]
-            when Array:  old << val
-            when nil:    @args_named[arg] = val
+            when Array then old << val
+            when nil then @args_named[arg] = val
             else        
               @args_named[arg] = [old, val]
             end
